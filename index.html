@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width"> 
+	<title>Testimonial Sliders</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<section class="testimonial-container">
+		<div class="container">
+			<div class="testimonial-box">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="testimonial-left-part">
+							<div class="testimonial-img-box">
+								<div class="testimonial-image image-active">
+									<img src="img1.png" alt="testimonial-image">
+								</div>
+								<div class="testimonial-image">
+									<img src="img2.png" alt="testimonial-image">
+								</div>
+								<div class="testimonial-image">
+									<img src="img3.png" alt="testimonial-image">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="testimonial-right-part">
+							<div class="testimonial-content-box">
+								<div class="controls">
+									<div class="control prev-btn"><i class="fa fa-chevron-left"></i></div>
+									<div class="control next-btn"><i class="fa fa-chevron-right"></i></div>
+								</div>
+								<div class="slides">
+									<div class="testimonial-content content1 content-active">
+										<h3>Content 1</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua.</p>
+									</div>
+									<div class="testimonial-content content2">
+										<h3>Content 2</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua.</p>
+									</div>
+									<div class="testimonial-content content3">
+										<h3>Content 3</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua.</p>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+
+		var testimonialImage = $(".testimonial-image");
+		var testimonialContent= $(".testimonial-content").next();
+
+		var nextBtn = $(".next-btn");
+		var prevBtn = $(".prev-btn");
+
+		// console.log(testimonialContent);
+		// console.log(testimonialContent.length);
+		$(nextBtn).on("click",function(){
+			var currentContent = $(".content-active");
+			var nextContent = currentContent.next();
+
+			var currentImage = $(".image-active");
+			var nextImage = currentImage.next();
+
+
+			if(nextContent.length && nextImage.length){
+
+				nextContent.addClass("content-active");
+				currentContent.removeClass("content-active");
+
+				nextImage.addClass("image-active",2000);
+				currentImage.removeClass("image-active",200);
+				
+			}
+		});	
+
+		$(prevBtn).on("click",function(){
+			var currentContent = $(".content-active");
+			var prevContent = currentContent.prev();
+
+			var currentImage = $(".image-active");
+			var prevImage = currentImage.prev();
+
+			if(prevContent.length){
+				prevContent.addClass("content-active");
+				currentContent.removeClass("content-active");
+
+				prevImage.addClass("image-active");
+				currentImage.removeClass("image-active");
+			}
+		});	
+
+	});
+</script>
+</html>
